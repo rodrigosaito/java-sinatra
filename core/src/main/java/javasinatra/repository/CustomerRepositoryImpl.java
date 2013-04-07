@@ -1,5 +1,7 @@
 package javasinatra.repository;
 
+import java.util.List;
+
 import javasinatra.core.model.Customer;
 
 import javax.persistence.EntityManager;
@@ -17,6 +19,11 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     
     public void save(Customer c) {
         em.persist(c);
+    }
+
+    @Override
+    public List<Customer> all() {
+        return em.createQuery("from Customer", Customer.class).getResultList();
     }
     
 }
