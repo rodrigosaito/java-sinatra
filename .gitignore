@@ -3,3 +3,6 @@
 .settings
 target
 generated-sources
+jars
+log
+tmp
