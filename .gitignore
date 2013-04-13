@@ -6,3 +6,4 @@ generated-sources
 jars
 log
 tmp
+*.swp

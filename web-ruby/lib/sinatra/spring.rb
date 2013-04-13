@@ -6,7 +6,7 @@ module Sinatra
   module Spring
 
     def spring_bean(name)
-      ::Spring::Context.bean_factory.bean(name)
+      ::Spring::Context.bean(name)
     end
 
   end
