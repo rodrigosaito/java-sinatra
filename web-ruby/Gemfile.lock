@@ -21,6 +21,7 @@ GEM
     listen (0.7.3)
     lumberjack (1.0.3)
     method_source (0.8.1)
+    poncho (0.0.2)
     pry (0.9.12-java)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -65,6 +66,7 @@ PLATFORMS
 
 DEPENDENCIES
   guard-rspec
+  poncho
   rack-test
   rspec
   sinatra
