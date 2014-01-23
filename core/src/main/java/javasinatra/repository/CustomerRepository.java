@@ -12,4 +12,6 @@ public interface CustomerRepository {
     
     List<Customer> all();
     
+    void deleteAll();
+    
 }

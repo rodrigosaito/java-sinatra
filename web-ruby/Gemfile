@@ -2,12 +2,14 @@ source "https://rubygems.org"
 
 gem "sinatra", require: false
 gem "sinatra-contrib", require: false
+#gem "grape"
+#gem "grape-entity"
 gem "poncho"
 
 gem "trinidad", require: false
 
 group :test do
-  gem "guard-rspec"
+  gem "guard-jruby-rspec"
   gem "rspec"
   gem "rack-test"
 end

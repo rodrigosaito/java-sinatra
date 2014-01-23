@@ -1,1 +1,3 @@
-../../ruby/config.ru
+require "./app"
+
+run JavaSinatra

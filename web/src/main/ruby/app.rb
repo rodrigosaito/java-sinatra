@@ -1,10 +1,22 @@
 APP_ENV = ENV['RACK_ENV'] ||= 'development' unless defined?(APP_ENV)
 
+require 'java'
+
 require 'sinatra/base'
 require 'sinatra/reloader'
 
 require 'sinatra_spring'
 
+
+
+java_import 'javasinatra.core.model.Customer'
+
+c = Customer.new;
+c.name = "Some Customer"
+c.email = "some_customer@domain.com"
+
+include Sinatra::Spring
+bean("customerRepository").save(c)
 
 class JavaSinatra < Sinatra::Base
   #configure :development do
@@ -16,7 +28,6 @@ class JavaSinatra < Sinatra::Base
   set :environment, :development
 
   get "/customers" do
-    puts "funciona? nao"
     repo = bean("customerRepository")
 
     cust1 = Java::JavasinatraCoreModel::Customer.new

@@ -26,4 +26,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         return em.createQuery("from Customer", Customer.class).getResultList();
     }
     
+    @Override
+    public void deleteAll() {
+    	em.createQuery("delete from Customer").executeUpdate();
+    }
+    
 }
