@@ -1,41 +1,49 @@
 APP_ENV = ENV['RACK_ENV'] ||= 'development' unless defined?(APP_ENV)
 
-require 'java'
-
 require 'sinatra/base'
 require 'sinatra/reloader'
 
 require 'sinatra_spring'
-
-
+require "transaction"
 
 java_import 'javasinatra.core.model.Customer'
 
-c = Customer.new;
-c.name = "Some Customer"
-c.email = "some_customer@domain.com"
+class TransactionMiddleware
 
-include Sinatra::Spring
-bean("customerRepository").save(c)
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    Spring::Transaction.execute do
+      @app.call(env)
+    end
+  end
+
+end
 
 class JavaSinatra < Sinatra::Base
-  #configure :development do
-    register Sinatra::Reloader
-  #end
-
   helpers Sinatra::Spring
+
+  use TransactionMiddleware
 
   set :environment, :development
 
+  def customerRepository
+    bean("customerRepository")
+  end
+
   get "/customers" do
-    repo = bean("customerRepository")
+    customerRepository.all.to_s
+  end
 
-    cust1 = Java::JavasinatraCoreModel::Customer.new
-    cust1.name = "Some Customer"
-    cust1.email = "customer@domain.com"
-    repo.save cust1
+  post "/customers" do
+    c = Customer.new
 
-    bean("customerRepository").all
+    c.name = "Another Customer"
+    c.email = "another@domain.com"
+
+    customerRepository.save c
   end
 
 end

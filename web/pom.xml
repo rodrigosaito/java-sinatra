@@ -17,19 +17,27 @@
                     <systemProperties>
                         <systemProperty>
                             <name>DATABASE_URL</name>
-                            <value>jdbc:hsqldb:mem:javasinatra</value>
+                            <value>jdbc:mysql://localhost/java_sinatra_dev</value>
                         </systemProperty>
                         <systemProperty>
                             <name>DATABASE_DIALECT</name>
-                            <value>org.hibernate.dialect.HSQLDialect</value>
+                            <value>org.hibernate.dialect.MySQLDialect</value>
                         </systemProperty>
                         <systemProperty>
                             <name>DATABASE_DRIVER</name>
-                            <value>org.hsqldb.jdbcDriver</value>
+                            <value>com.mysql.jdbc.Driver</value>
                         </systemProperty>
                         <systemProperty>
                             <name>DATABASE_HBM2DDL</name>
                             <value>update</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <name>DATABASE_USERNAME</name>
+                            <value>root</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <name>DATABASE_PASSWORD</name>
+                            <value>root</value>
                         </systemProperty>
                     </systemProperties>
                 </configuration>
