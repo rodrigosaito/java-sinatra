@@ -3,29 +3,14 @@ APP_ENV = ENV['RACK_ENV'] ||= 'development' unless defined?(APP_ENV)
 require 'sinatra/base'
 require 'sinatra/reloader'
 
-require 'sinatra_spring'
-require "transaction"
+require 'spring'
 
 java_import 'javasinatra.core.model.Customer'
 
-class TransactionMiddleware
-
-  def initialize(app)
-    @app = app
-  end
-
-  def call(env)
-    Spring::Transaction.execute do
-      @app.call(env)
-    end
-  end
-
-end
-
 class JavaSinatra < Sinatra::Base
-  helpers Sinatra::Spring
+  helpers Spring::Base
 
-  use TransactionMiddleware
+  use Spring::TransactionMiddleware
 
   set :environment, :development
 

@@ -6,7 +6,7 @@ module Spring
   module Transaction
 
     class << self
-      include Sinatra::Spring
+      include Spring::Base
 
       def execute(&block)
         txManager = bean("transactionManager")
