@@ -1,12 +1,15 @@
 java_import 'org.springframework.context.annotation.AnnotationConfigApplicationContext'
 
+require 'sinatra/base'
+
 module Spring
 
   module Sinatra
-    extend Base
+
+    include Base
 
   end
 
-  # helpers Sinatra
+  ::Sinatra.helpers Sinatra
 
 end

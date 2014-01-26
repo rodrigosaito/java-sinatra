@@ -8,9 +8,10 @@ require 'spring'
 java_import 'javasinatra.core.model.Customer'
 
 class JavaSinatra < Sinatra::Base
-  helpers Spring::Base
+  helpers Spring::Sinatra
 
   use Spring::TransactionMiddleware
+  use Rack::CommonLogger
 
   set :environment, :development
 
