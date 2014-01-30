@@ -1,0 +1,13 @@
+box: wercker/android
+build:
+  # The steps that will be executed on build
+  steps:
+    - script:
+        name: show base information
+        code: |
+          mvn -v
+    - script:
+        name: mvn clean instal
+        code: |
+          mvn clean install
+
