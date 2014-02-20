@@ -12,10 +12,9 @@ build:
           mvn clean install
 deploy:
     steps:
-        # Execute the s3sync deploy step, a step provided by wercker
-        - s3sync:
-            key_id: $AWS_ACCESS_KEY_ID
-            key_secret: $AWS_SECRET_ACCESS_KEY
-            bucket_url: $AWS_BUCKET_URL
-            source_dir: ./web/target/web-0.0.1-SNAPSHOT.war
+        - rioki/s3put@0.0.3
+            key-id: $AWS_ACCESS_KEY_ID
+            key-secret: $AWS_SECRET_ACCESS_KEY
+            file: ./web/target/web-0.0.1-SNAPSHOT.war
+            url:  s3://java-sinatra/web-$WERCKER_GIT_COMMIT.war
 
