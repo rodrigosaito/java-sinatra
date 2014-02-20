@@ -16,5 +16,5 @@ deploy:
         key-id: $AWS_ACCESS_KEY_ID
         key-secret: $AWS_SECRET_ACCESS_KEY
         file: ./web/target/web-0.0.1-SNAPSHOT.war
-        url:  s3://java-sinatra/web.war
+        url:  s3://java-sinatra/web-$WERCKER_GIT_COMMIT.war
 
