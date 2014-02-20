@@ -12,7 +12,7 @@ build:
           mvn clean install
 deploy:
     steps:
-      - rioki/s3put@0.0.3
+      - rioki/s3put:
         key-id: $AWS_ACCESS_KEY_ID
         key-secret: $AWS_SECRET_ACCESS_KEY
         file: ./web/target/web-0.0.1-SNAPSHOT.war
