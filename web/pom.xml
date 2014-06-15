@@ -10,7 +10,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <jruby-maven-plugins.version>1.0.0-SNAPSHOT</jruby-maven-plugins.version>
+        <jruby-maven-plugins.version>1.0.0-beta-1-SNAPSHOT</jruby-maven-plugins.version>
         <jruby.version>1.7.10</jruby.version>
         <rspec.version>2.14.1</rspec.version>
     </properties>
@@ -48,6 +48,20 @@
                         </systemProperty>
                     </systemProperties>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <id>tomcat-run</id>
+                        <goals>
+                            <goal>exec-war-only</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>de.saumya.mojo</groupId>

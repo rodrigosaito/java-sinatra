@@ -11,4 +11,5 @@ tmp
 *.iml
 web/src/main/webapp/WEB-INF/gems/
 .DS_Store
+.extract
 
